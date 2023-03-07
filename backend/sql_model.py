@@ -35,6 +35,13 @@ class User(Base):
     name = Column(String(24),nullable=False)
     student_number = Column(String(24),unique=True,nullable=False)
     number = Column(String(14),unique=True,nullable=False)
+    illegal_number=Column(Integer)
+
+class Manager(Base):
+    __tablename__ = 'manager'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    email = Column(String(50), unique=True, nullable=False)
+    password = Column(String(50), unique=True, nullable=False)
 
 
 if __name__ == '__main__':
@@ -42,7 +49,7 @@ if __name__ == '__main__':
 
     # 主管理员创建信息
     """
-    manager_main = Manager(name="kunkun", phone_number="13835678673", email="2839078819@qq.com", password="my123")
+    manager_main = Manager(email="2839078819@qq.com", password="my123")
     sess.add(manager_main)
     sess.commit()
     """

@@ -43,7 +43,7 @@ def register():
         number = data.get("number")
         student_number = data.get("student_number")
         oid = data.get("oid")
-        h = User(name=name, number=number,student_number=student_number,oid=oid)
+        h = User(name=name, number=number,student_number=student_number,oid=oid,illegal_number=0)
         sess.add(h)
         try:
             sess.commit()

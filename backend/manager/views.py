@@ -1,4 +1,38 @@
-from user.init import user_bp
+import hashlib
+from datetime import datetime
+import os
+from manager.init import manager_bp
 from flask import request,jsonify
-
+from sql_model import sess,Manager
 import json
+
+class MyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, bytes):
+            return str(obj, encoding='utf-8');
+        return json.JSONEncoder.default(self, obj)
+
+
+@manager_bp.route('/Login',methods=['GET','POST'])
+def Login():
+    if request.method == 'POST':
+        form = request.form
+        data = form.to_dict()
+        res = sess.query(Manager).filter(Manager.email == data.get("account")).all()
+        if res:
+            if res[0].password == data.get("password"):
+                return json.dumps({
+                    "suc": True,
+                    "message": "登录成功",
+                })
+            else:
+                return json.dumps({
+                    "suc": False,
+                    "message": "密码错误",
+                })
+        else:
+            print("未查询到数据")
+            return json.dumps({
+                "suc": False,
+                "message": "邮箱未被赋予管理员权限",
+            })

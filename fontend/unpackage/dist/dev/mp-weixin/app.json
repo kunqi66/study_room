@@ -2,8 +2,11 @@
   "pages": [
     "pages/user/home/home",
     "pages/user/person/person",
-    "pages/manager/index/index",
-    "pages/user/order/order"
+    "pages/manager/index",
+    "pages/user/order/order",
+    "pages/manager/home",
+    "pages/manager/createNotice",
+    "pages/manager/createMana"
   ],
   "subPackages": [],
   "window": {

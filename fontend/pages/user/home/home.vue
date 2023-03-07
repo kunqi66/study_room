@@ -26,9 +26,9 @@
 				自习室规定：daisikjaksjdlajdlkasjdlskajsakdjaslkdhalksdjlkadjsdfsdfsdfsdf
 			</view> 
 			<view class="complaint_home">
-				投诉写这里
+				投诉写这里  
 			</view>  
-		</view>   
+		</view>    
 	</view>
 </template>
 

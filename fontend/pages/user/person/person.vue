@@ -59,7 +59,7 @@
 								<button style="width: 50%;" type="primary" size="mini" @click="closeRegister()">关闭</button>
 							</view>
 						</view>
-					</uni-card>
+					</uni-card> 
 			</view>
 		</uni-popup>
 		
@@ -93,12 +93,15 @@
 				},{
 					title:"个人违规记录",
 					url:"",
-				}]
+				}] 
 			}
 		},
 		methods:{
 			mana_login(){
-				
+				console.log("调用了函数")
+				uni.navigateTo({
+					url:"/pages/manager/index",
+				})
 			},
 			user_logout(){
 				var that=this;
@@ -126,6 +129,7 @@
 								icon: 'checkmarkempty'
 							})
 							that.$refs.register.close()
+							that.wx_login()
 						}
 					}
 				})

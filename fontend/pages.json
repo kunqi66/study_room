@@ -19,10 +19,10 @@
             
         }
         ,{
-            "path" : "pages/manager/index/index",
+            "path" : "pages/manager/index",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "管理员登录",
                 "enablePullDownRefresh": true
             }
             
@@ -37,6 +37,33 @@
             
         }
 
+        ,{
+            "path" : "pages/manager/home",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "管理员主页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+		    "path" : "pages/manager/createNotice",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "管理员主页",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/manager/createMana",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
