@@ -39,7 +39,7 @@
 					<view>风向:{{weatherList[index].direct}}</view>
 					<view>温度:{{weatherList[index].temperature}}</view>
 					<view>天气:{{weatherList[index].weather}}</view>
-					<view>----------</view>
+					<view>-----------</view>
 				</view>
 			</view>
 			</uni-popup>
