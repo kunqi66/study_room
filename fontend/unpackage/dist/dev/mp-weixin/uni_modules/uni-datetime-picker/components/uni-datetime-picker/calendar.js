@@ -80,7 +80,7 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 94))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 170))
     },
   }
 } catch (e) {
@@ -147,7 +147,7 @@ exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _util = _interopRequireDefault(__webpack_require__(/*! ./util.js */ 196));
 var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 22);
-var _index = _interopRequireDefault(__webpack_require__(/*! ./i18n/index.js */ 172));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./i18n/index.js */ 164));
 //
 //
 //

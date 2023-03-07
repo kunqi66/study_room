@@ -97,10 +97,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var render = function () {}
-var staticRenderFns = []
-var recyclableRender
 var components
+try {
+  components = {
+    uniTitle: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-title/components/uni-title/uni-title */ "uni_modules/uni-title/components/uni-title/uni-title").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-title/components/uni-title/uni-title.vue */ 115))
+    },
+    uniIcons: function () {
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 170))
+    },
+    uniList: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list/uni-list */ "uni_modules/uni-list/components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list/uni-list.vue */ 87))
+    },
+    uniListItem: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 94))
+    },
+    uniPopup: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 101))
+    },
+    uniSection: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-section/components/uni-section/uni-section */ "uni_modules/uni-section/components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-section/components/uni-section/uni-section.vue */ 152))
+    },
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var recyclableRender = false
+var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -206,13 +249,13 @@ exports.default = void 0;
 //
 //
 //
-//
 var _default = {
   data: function data() {
     return {
       direct: "",
       weather: {},
-      realWeather: {}
+      realWeather: {},
+      weatherList: []
     };
   },
   onLoad: function onLoad() {
@@ -220,6 +263,9 @@ var _default = {
     console.log("获取到当前的天气" + this.realWeather + "获取数据" + this.weather);
   },
   methods: {
+    createWeather: function createWeather() {
+      this.$refs.weather.open();
+    },
     open: function open() {
       this.$refs.guiding.open();
     },
@@ -233,12 +279,13 @@ var _default = {
         method: "GET",
         data: {
           "city": "太原",
-          "key": "66b934d1e96ee28fcff59c901dc97a21"
+          "key": "67322f26b8ec4e7a2cc8738f1905e5ed"
         },
         success: function success(res) {
           console.log(res);
           that.weather = res.data.result;
           that.realWeather = res.data.result.realtime;
+          that.weatherList = res.data.result.future;
         }
       });
     }
