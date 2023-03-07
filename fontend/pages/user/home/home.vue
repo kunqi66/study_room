@@ -79,6 +79,7 @@
 		width: 90%;
 		margin-left: 5%;
 		background-color: black;
+		margin-bottom: 20px;
 	}
 	.manage_home{
 		background-color: bisque;
@@ -86,5 +87,8 @@
 		width: 45%;
 		margin-right: 5%;
 		float: right;
+	}
+	.complaint_home{
+		margin-top: 20px;
 	}
 </style>
