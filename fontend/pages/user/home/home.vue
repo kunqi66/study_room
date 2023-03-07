@@ -25,7 +25,7 @@
 			<view class="manage_home">
 				
 				<uni-list >
-					<uni-list-item title="自习室规定" ;"></uni-list-item>
+					<uni-list-item title="自习室规定"></uni-list-item>
 					<uni-list-item title="第一条通知" note="0.0"></uni-list-item>
 					<uni-list-item title="第二条通知" note="0.0"></uni-list-item>
 					
@@ -36,7 +36,7 @@
 			<view class="complaint_home">
 				投诉写这里
 			</view>  
-		</view> 
+		</view>     
 		  <uni-popup ref="guiding" type="top"  >
 		<view style="">
 		  <uni-list-item title="5555555555555555555555" note="0.0"></uni-list-item>
