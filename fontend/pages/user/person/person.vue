@@ -98,18 +98,7 @@
 		},
 		methods:{
 			mana_login(){
-				uni.request({
-					url:"http://apis.juhe.cn/simpleWeather/query",
-					header: {'content-type':'application/x-www-form-urlencoded'},
-					method:"GET",
-					data:{
-						"city":"太原",
-						"key":"66b934d1e96ee28fcff59c901dc97a21",
-					},
-					success(res) {
-						console.log(res);
-					}
-				})
+				
 			},
 			user_logout(){
 				var that=this;

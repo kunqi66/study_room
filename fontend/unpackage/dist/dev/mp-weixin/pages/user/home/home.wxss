@@ -1,0 +1,21 @@
+
+.weather_home{
+	width: 45%;
+	margin-left: 5%;
+	font-size: 18px;
+	height: 120px;
+	float: left;
+}
+.notice_home{
+	width: 90%;
+	margin-left: 5%;
+	background-color: black;
+}
+.manage_home{
+	background-color: bisque;
+	height: 120px;
+	width: 45%;
+	margin-right: 5%;
+	float: right;
+}
+
