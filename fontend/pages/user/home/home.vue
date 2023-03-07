@@ -1,6 +1,19 @@
 <template>
 	<view>
-
+		<view class="title">
+			公告
+		</view>
+		<view class="notice_home" @click="tanchuang">
+				<view class="notice_title">
+					{{noticelist[0].notice_title}} 
+				</view>
+				<view class="notice_text">
+					{{noticelist[0].notice_text}}
+				</view>
+				<view class="notice_time">
+					{{noticelist[0].notice_time}}
+				</view>
+		</view>
 		<view class="temp">
 			<view class="notice_home">
 					<uni-title type="h1" title="公告" color="#ffaaa7"></uni-title>
@@ -65,6 +78,23 @@
 		  </view>
 		  </uni-popup>
 
+
+
+			<uni-popup ref="notice_history" type="center">
+				<view class="notice_tan">
+					<view class="tanchuang2" v-for="(item,index) in noticelist">
+							<view class="notice_title">
+								{{noticelist[index].notice_title}} 
+							</view>
+							<view class="notice_text">
+								{{noticelist[index].notice_text}}
+							</view>
+							<view class="notice_time">
+								{{noticelist[index].notice_time}}
+							</view>
+					</view>
+				</view>
+			</uni-popup>
 	</view>
 </template>
 
@@ -79,6 +109,37 @@
 				realWeather:{},
 				weatherList:[
 				],
+				noticelist:[{
+					"notice_title":"公告",
+					"notice_text":"我看谁再给我卷",
+					"notice_time":"2023年3月7日"
+				},
+				{
+					"notice_title":"公告",
+					"notice_text":"我看谁再给我卷",
+					"notice_time":"2023年3月7日"
+				},
+				{
+					"notice_title":"公告",
+					"notice_text":"我看谁再给我卷",
+					"notice_time":"2023年3月7日"
+				},
+				{
+					"notice_title":"公告",
+					"notice_text":"我看谁再给我卷",
+					"notice_time":"2023年3月7日"
+				},
+				{
+					"notice_title":"公告",
+					"notice_text":"我看谁再给我卷",
+					"notice_time":"2023年3月7日"
+				},
+				{
+					"notice_title":"公告",
+					"notice_text":"我看谁再给我卷",
+					"notice_time":"2023年3月7日"
+				}],
+				
 			}
 			},
 		onLoad() {
@@ -88,6 +149,9 @@
 		methods: {
 			createWeather(){
 				this.$refs.weather.open()
+			},
+			tanchuang(){
+				this.$refs.notice_history.open()
 			},
 			open(){
 			     this.$refs.guiding.open()
@@ -117,7 +181,49 @@
 </script>
 
 <style>
+	.tanchuang1{
+		background-color: azure;
+		width: 300px;
+		height: 550px;
+		border-radius: 10px;
+	}
+	.title{
+		width: 100%;
+		height: 50px;
+		font-size: 30px;
+		text-align: center;
+		color: rebeccapurple;
+	}
+	.notice_tan{
+		padding: 8px;
+		width:300px;
+		height: 500px;
+		background-color: azure;
+		border-radius: 10px;
+	}
+	.notice_title{
+		font-size: 18px;
+		font-weight: bold;
+		border-left: 5px solid #ffaa00;
+		padding-left: 10px;
+	}
+	.notice_text{
+		font-size: 18px;
+		color: black;
+	}
+	.notice_time{
+		font-size: 18px;
+		color: #00a2f3;
+		text-align: right;
+	}
+	.tanchuang2{
+		margin-top: 8px;
+		width:300px;
+		background-color: azure;
+		border-bottom: 1px dashed #686800 ;
+	}
 	.weather_home{
+		margin-top: 10px;
 		width: 45%;
 		margin-left: 5%;
 		font-size: 18px;
@@ -127,7 +233,7 @@
 	.notice_home{
 		width: 90%;
 		margin-left: 5%;
-		background-color: black;
+		/* background-color: black; */
 		margin-bottom: 20px;
 	}
 	.manage_home{
@@ -140,10 +246,5 @@
 	.complaint_home{
 		margin-top: 20px;
 	}
-	.tanchuang1{
-		background-color: azure;
-		width: 300px;
-		height: 550px;
-		border-radius: 10px;
-	}
+	
 </style>
