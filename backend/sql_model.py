@@ -28,6 +28,15 @@ class Host(Base):
     port = Column(Integer, default=8080)
 
 
+class User(Base):
+    __tablename__ = 'user'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    oid = Column(String(200),unique=True,nullable=False)
+    name = Column(String(24),nullable=False)
+    student_number = Column(String(24),unique=True,nullable=False)
+    number = Column(String(14),unique=True,nullable=False)
+
+
 if __name__ == '__main__':
     Base.metadata.create_all(engine)  # 创建表
 

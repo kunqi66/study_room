@@ -1,9 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/user/person/person"],{
 
 /***/ 33:
-/*!*************************************************************************!*\
-  !*** K:/实训设计/fontend/main.js?{"page":"pages%2Fuser%2Fperson%2Fperson"} ***!
-  \*************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** D:/Desktop/study/study_room/fontend/main.js?{"page":"pages%2Fuser%2Fperson%2Fperson"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22,9 +22,9 @@ createPage(_person.default);
 /***/ }),
 
 /***/ 34:
-/*!****************************************************!*\
-  !*** K:/实训设计/fontend/pages/user/person/person.vue ***!
-  \****************************************************/
+/*!************************************************************************!*\
+  !*** D:/Desktop/study/study_room/fontend/pages/user/person/person.vue ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -63,9 +63,9 @@ component.options.__file = "pages/user/person/person.vue"
 /***/ }),
 
 /***/ 35:
-/*!***********************************************************************************!*\
-  !*** K:/实训设计/fontend/pages/user/person/person.vue?vue&type=template&id=750462c4& ***!
-  \***********************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** D:/Desktop/study/study_room/fontend/pages/user/person/person.vue?vue&type=template&id=750462c4& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -85,9 +85,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 36:
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!K:/实训设计/fontend/pages/user/person/person.vue?vue&type=template&id=750462c4& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/Desktop/study/study_room/fontend/pages/user/person/person.vue?vue&type=template&id=750462c4& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -156,9 +156,9 @@ render._withStripped = true
 /***/ }),
 
 /***/ 37:
-/*!*****************************************************************************!*\
-  !*** K:/实训设计/fontend/pages/user/person/person.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/Desktop/study/study_room/fontend/pages/user/person/person.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -172,9 +172,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 38:
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!K:/实训设计/fontend/pages/user/person/person.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/Desktop/study/study_room/fontend/pages/user/person/person.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -282,8 +282,52 @@ var _default = {
     };
   },
   methods: {
-    submitRegster: function submitRegster() {
+    mana_login: function mana_login() {
+      uni.request({
+        url: "http://apis.juhe.cn/simpleWeather/query",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: "GET",
+        data: {
+          "city": "太原",
+          "key": "66b934d1e96ee28fcff59c901dc97a21"
+        },
+        success: function success(res) {
+          console.log(res);
+        }
+      });
+    },
+    user_logout: function user_logout() {
       var that = this;
+      this.managerview = -1, getApp().globalData.uid = -1;
+    },
+    submitRegister: function submitRegister() {
+      var that = this;
+      uni.request({
+        url: getApp().globalData.urlRoot + "user/register",
+        header: {
+          'Authorization': "wutoken",
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: "POST",
+        data: {
+          "name": that.registerForm.name,
+          "student_number": that.registerForm.student_number,
+          "number": that.registerForm.number,
+          "oid": that.openid
+        },
+        success: function success(res) {
+          if (res.data.suc) {
+            console.log("注册成功");
+            uni.showToast({
+              title: "信息绑定成功！",
+              icon: 'checkmarkempty'
+            });
+            that.$refs.register.close();
+          }
+        }
+      });
     },
     closeRegister: function closeRegister() {
       this.$refs.register.close();
@@ -306,12 +350,13 @@ var _default = {
           if (res.code) {
             //发起网络请求
             uni.request({
-              //这里填你自己的appid 和 wxspSecret 
+              //这里填你自己的appid 和 wxspSecret
               url: "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxspAppid + "&secret=" + wxspSecret + "&js_code=" + res.code + "&grant_type=authorization_code",
               method: "POST",
               success: function success(res) {
                 oid = res.data.openid;
                 that.openid = oid;
+                console.log(that.openid);
                 uni.request({
                   header: {
                     'Authorization': "wutoken",
@@ -326,6 +371,10 @@ var _default = {
                     if (res1.data.suc) {
                       getApp().globalData.uid = res1.data.uid;
                       that.managerview = res1.data.uid;
+                      console.log("id为" + getApp().globalData.uid);
+                      that.userInfo.name = res1.data.name;
+                      console.log(res1);
+                      console.log(that.userInfo.name);
                       uni.showToast({
                         title: "登录成功！",
                         icon: 'checkmarkempty'
@@ -355,9 +404,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 39:
-/*!*************************************************************************************!*\
-  !*** K:/实训设计/fontend/pages/user/person/person.vue?vue&type=style&index=0&lang=css& ***!
-  \*************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** D:/Desktop/study/study_room/fontend/pages/user/person/person.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -371,9 +420,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 40:
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!K:/实训设计/fontend/pages/user/person/person.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/Desktop/study/study_room/fontend/pages/user/person/person.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

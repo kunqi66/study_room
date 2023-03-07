@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "个人中心",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
     "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item",

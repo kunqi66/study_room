@@ -4,12 +4,12 @@
 			<button style="background-color:#eef7fe; border: none; size:auto;">
 				<view class="image_home">
 					<image class="avatar" v-if="managerview == -1" src="/static/logo.png" />
-					<image class="avatar" v-if="managerview != -1" src="/static/l.png"></image>
+					<image class="avatar" v-if="managerview != -1" src="/static/l.jpg"></image>
 					<view>
-					<span style="text-align: center;size: 50px;" >
-					<text v-if="managerview == -1" class="img-text">用户昵称</text>
-					<text v-if="managerview != -1" class="img-text">微信用户</text>
-					</span>
+						<span style="text-align: center;size: 50px;" >
+						<text v-if="managerview == -1" class="img-text">用户昵称</text>
+						<text v-if="managerview != -1" class="img-text">{{ userInfo.name }}</text>
+						</span>
 					</view>
 				</view>
 			</button>
@@ -31,7 +31,7 @@
 		</view>
 		
 		<view style="width: 80%; margin-left: 10%; margin-top: 50px;">
-			<button  v-if="managerview != -1" type="error"  @click="user_logout()" >退出登录</button>
+			<button  v-if="managerview != -1" type="warn" plain="true" @click="user_logout()" >退出登录</button>
 		</view>
 		
 		
@@ -44,13 +44,13 @@
 						<uni-title type="h1" align="center" title="填写个人信息"></uni-title>
 							<uni-forms :model-value="registerForm">
 								<uni-forms-item label="姓名">
-									<uni-easyinput type="text" v-model="formData.name" placeholder="请输入姓名" />
+									<uni-easyinput type="text" v-model="registerForm.name" placeholder="请输入姓名" />
 								</uni-forms-item>
 								<uni-forms-item label="学号">
-									<uni-easyinput type="text" v-model="formData.student_number" placeholder="请输入您的学号" />
+									<uni-easyinput type="text" v-model="registerForm.student_number" placeholder="请输入您的学号" />
 								</uni-forms-item>
 								<uni-forms-item label="电话">
-									<uni-easyinput type="text" v-model="formData.number" placeholder="请输入您的电话" />
+									<uni-easyinput type="text" v-model="registerForm.number" placeholder="请输入您的电话" />
 								</uni-forms-item>
 							</uni-forms>
 						<view slot="actions" class="card-actions">
@@ -97,11 +97,52 @@
 			}
 		},
 		methods:{
-			submitRegster(){
+			mana_login(){
+				uni.request({
+					url:"http://apis.juhe.cn/simpleWeather/query",
+					header: {'content-type':'application/x-www-form-urlencoded'},
+					method:"GET",
+					data:{
+						"city":"太原",
+						"key":"66b934d1e96ee28fcff59c901dc97a21",
+					},
+					success(res) {
+						console.log(res);
+					}
+				})
+			},
+			user_logout(){
 				var that=this;
+				this.managerview=-1,
+				getApp().globalData.uid=-1
+			},
+			submitRegister(){
+				var that=this;
+				uni.request({
+					url:getApp().globalData.urlRoot+"user/register",
+					header: {'Authorization':"wutoken",
+								'content-type':'application/x-www-form-urlencoded'},
+					method: "POST",
+					data:{
+						"name": that.registerForm.name,
+						"student_number":that.registerForm.student_number,
+						"number":that.registerForm.number,
+						"oid":that.openid
+					},
+					success(res) {
+						if(res.data.suc){
+							console.log("注册成功");
+							uni.showToast({
+								title: "信息绑定成功！",
+								icon: 'checkmarkempty'
+							})
+							that.$refs.register.close()
+						}
+					}
+				})
 			},
 			closeRegister(){
-				this.$refs.register.close();
+				this.$refs.register.close()
 			},
 			wx_login(){
 				var that =this;
@@ -121,12 +162,13 @@
 				         if (res.code) {
 				           //发起网络请求
 				           uni.request({
-				           //这里填你自己的appid 和 wxspSecret 
+				           //这里填你自己的appid 和 wxspSecret
 				             url: "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxspAppid+"&secret=" + wxspSecret + "&js_code=" + res.code + "&grant_type=authorization_code" ,
 				             method: "POST",
 				             success(res){
 				 				oid=res.data.openid
 				 				that.openid=oid
+								console.log(that.openid)
 				 				uni.request({
 				 					header: {'Authorization':"wutoken",
 				 								'content-type':'application/x-www-form-urlencoded'},
@@ -139,6 +181,10 @@
 				 						if(res1.data.suc){
 											getApp().globalData.uid=res1.data.uid;
 											that.managerview=res1.data.uid;
+											console.log("id为"+getApp().globalData.uid)
+											that.userInfo.name=res1.data.name
+											console.log(res1)
+											console.log(that.userInfo.name)
 											uni.showToast({
 												title: "登录成功！",
 												icon: 'checkmarkempty'

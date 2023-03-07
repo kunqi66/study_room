@@ -1,11 +1,20 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/user/home/home",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "主页",
+				"enablePullDownRefresh": true
+			}
+			
+		},
+		{
             "path" : "pages/user/person/person",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": true
             }
             
         }
@@ -14,10 +23,20 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
+        ,{
+            "path" : "pages/user/order/order",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "预约自习室",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -25,5 +44,31 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#999794",
+		"selectedColor": "#33312e",
+		"borderStyle": "white",
+		"backgroundColor": "#fafafa",
+		"list":[
+			{
+				"pagePath":"pages/user/home/home",
+				"iconPath": "static/log/home.jpg",
+				"selectedIconPath": "static/log/home1.jpg",
+				"text":"首页"
+			},
+			{
+				"pagePath": "pages/user/order/order",
+				"iconPath": "static/log/news.jpg",
+				"selectedIconPath": "static/log/news1.jpg",
+				"text":"自习室预约"
+			},
+			{
+				"pagePath": "pages/user/person/person",
+				"iconPath": "static/log/person.jpg",
+				"selectedIconPath": "static/log/person1.jpg",
+				"text":"个人中心"
+			}
+		]
+	}
 }
