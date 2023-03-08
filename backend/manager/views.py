@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 from manager.init import manager_bp
 from flask import request,jsonify
-from sql_model import sess,Manager,Stu_class,Notice
+from sql_model import sess,Manager,Stu_class,Notice,Site
 import json
 
 class MyEncoder(json.JSONEncoder):
@@ -70,6 +70,28 @@ def loadNotice():
                 "notice_title": r.title,
                 "notice_text": r.text,
                 "notice_time":r.date,
+            })
+        if form:
+            return json.dumps({
+                "suc": True,
+                "form": list,
+            }, cls=MyEncoder, indent=4)
+        else:
+            return json.dumps({
+                "suc": False,
+                "message": "未查询到数据",
+            })
+
+
+@manager_bp.route('/loadSite',methods=['GET','POST'])
+def loadSite():
+    if request.method == 'POST':
+        list = []
+        form = sess.query(Site).all()
+        for r in form:
+            list.append({
+                "id": r.id,
+                "status": r.state,
             })
         if form:
             return json.dumps({

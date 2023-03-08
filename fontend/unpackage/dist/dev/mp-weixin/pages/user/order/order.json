@@ -2,6 +2,7 @@
   "navigationBarTitleText": "预约自习室",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card"
+    "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup"
   }
 }

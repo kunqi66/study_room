@@ -1,0 +1,1 @@
+<view><uni-section vue-id="fd300bf0-1" title="编辑公告:" type="line" bind:__l="__l"></uni-section><view class="example-body"><uni-easyinput bind:input="__e" vue-id="fd300bf0-2" type="textarea" placeholder="请输入新增规定" value="{{formData.text}}" data-event-opts="{{[['^input',[['__set_model',['$0','text','$event',[]],['formData']]]]]}}" bind:__l="__l"></uni-easyinput></view></view>
