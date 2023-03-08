@@ -15,43 +15,32 @@
 				</view>
 		</view>
 		<view class="temp">
-			<view class="notice_home">
-					<uni-title type="h1" title="公告" color="#ffaaa7"></uni-title>
-			</view>
 			<view class="weather_home" @click="createWeather()">
 				<view>
 				<uni-icons type="contact" size="18"></uni-icons>
 				天气：{{ realWeather.info }}
-				</view>
-				<view>
+				 &nbsp;
 				<uni-icons type="fire" size="18"></uni-icons>
 				温度：{{ realWeather.temperature}} 
 				</view>
 				<view>
 				<uni-icons type="contact" size="18"></uni-icons>
-				风向：{{ realWeather.direct }} 
-				</view>   
-				<view>
+				风向：{{ realWeather.direct }}
+				&nbsp;
 				<uni-icons type="contact" size="18"></uni-icons>
 				风力：{{ realWeather.power }}
 				</view>
 			</view> 
-			<view class="manage_home" @click="open()">
-				
-				<uni-list >
-					<uni-list-item title="自习室规定"></uni-list-item>
-					<uni-list-item title="第一条通知" note="0.0"></uni-list-item>
-					<uni-list-item title="第二条通知" note="0.0"></uni-list-item>
-					
-				</uni-list>
-					
-			</view> 
-			<view class="complaint_home">
-				投诉写这里
-			</view>  
+			
 
 		</view>
-		
+		<view class="manage_home" @click="open()">
+			
+			<uni-list-item title="1.手机调至静音模式，接听电话请到室外接听。" note="0.0"></uni-list-item>
+			 <uni-list-item title="2.请保持安静，如需看视频，请戴上耳机。" note="0.0"></uni-list-item>
+			<uni-list-item title="3.请勿在学习区域吃东西。" note="0.0"></uni-list-item>
+				
+		</view> 
 		
 			<uni-popup ref="weather" type="center" background-color="" border-radius="14">
 				<view class="tanchuang1">
@@ -67,15 +56,15 @@
 		
 		   
 		  <uni-popup ref="guiding" type="center"  >
-		<view style="">
-		  <uni-list-item title="5555555555555555555555" note="0.0"></uni-list-item>
-		  <uni-list-item title="555" note="0.0"></uni-list-item>
-		 <uni-list-item title="555" note="0.0"></uni-list-item>
-		 <uni-list-item title="555" note="0.0"></uni-list-item>
-		 <uni-list-item title="555" note="0.0"></uni-list-item>
-		 <uni-list-item title="555" note="0.0"></uni-list-item>
-		 <uni-list-item title="555" note="0.0"></uni-list-item>
-		  </view>
+			<view style="">
+				  <uni-list-item title="1.手机调至静音模式，接听电话请到室外接听。" note="0.0"></uni-list-item>
+				  <uni-list-item title="2.请保持安静，如需看视频，请戴上耳机。" note="0.0"></uni-list-item>
+				 <uni-list-item title="3.请勿在学习区域吃东西。" note="0.0"></uni-list-item>
+				 <uni-list-item title="4.如需使用电脑，请使用静音键盘、鼠标。" note="0.0"></uni-list-item>
+				 <uni-list-item title="5.轻声关门，整理东西、起身落座、翻书时，请尽量降低声音。" note="0.0"></uni-list-item>
+				 <uni-list-item title="6.如有结伴同行的小伙伴需要讨论问题，可以到休息区或就餐区小声讨论" note="0.0"></uni-list-item>
+
+			  </view>
 		  </uni-popup>
 
 
@@ -181,6 +170,9 @@
 </script>
 
 <style>
+	.temp{
+		text-align: center;
+	}
 	.tanchuang1{
 		background-color: azure;
 		width: 300px;
@@ -224,11 +216,10 @@
 	}
 	.weather_home{
 		margin-top: 10px;
-		width: 45%;
+		width: 90%;
 		margin-left: 5%;
 		font-size: 18px;
 		height: 120px;
-		float: left;
 	}
 	.notice_home{
 		width: 90%;
@@ -237,11 +228,9 @@
 		margin-bottom: 20px;
 	}
 	.manage_home{
-		background-color: bisque;
 		height: 120px;
-		width: 45%;
-		margin-right: 5%;
-		float: right;
+		width: 90%;
+		margin-left: 5%;
 	}
 	.complaint_home{
 		margin-top: 20px;

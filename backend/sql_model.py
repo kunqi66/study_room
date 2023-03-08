@@ -42,6 +42,31 @@ class Manager(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String(50), unique=True, nullable=False)
     password = Column(String(50), unique=True, nullable=False)
+# 座位号，日期，原因
+
+class Complaint(Base):
+    __tablename__ = 'Complaint'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    date = Column(String(10), nullable=False)
+    reason = Column(String(60),nullable=False)
+    result = Column(String(1))
+
+
+class Recorde(Base):
+    __tablename__ = 'Recorde'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    stu_number = Column(String(50),nullable=False)
+    class_number = Column(Integer)
+    zw_number = Column(Integer)
+    date = Column(String(10))
+
+class Notice(Base):
+    __tablename__ = 'Notice'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    title = Column(String(20),nullable=False)
+    text = Column(String(200),nullable=False)
+    date = Column(String(20),nullable=False)
+
 
 
 if __name__ == '__main__':

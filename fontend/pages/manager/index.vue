@@ -27,6 +27,11 @@
 		},
 		methods: {
 			login(){
+				
+				uni.navigateTo({
+					url:"/pages/manager/home",
+				})    //调试用
+				
 				var that=this;
 				uni.request({
 					header: {'Authorization':getApp().globalData.token,

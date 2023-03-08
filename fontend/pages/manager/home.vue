@@ -11,13 +11,13 @@
 			<uni-card>
 				<uni-list style=" border-radius: 18rpx;">
 					<view style="border-radius: 18rpx;">
-					<uni-list-item title="更改用户权限" link to="/pages/Manager/mana-main/addManager" @click="onClick($event,1)"></uni-list-item>
+					<uni-list-item title="更改用户权限" link to="/pages/Manager/editUser" @click="onClick($event,1)"></uni-list-item>
 					</view>
 					<view>
-						<uni-list-item title="更改座位信息" link to="/pages/Manager/mana-main/editManager" @click="onClick($event,1)"></uni-list-item>
+						<uni-list-item title="更改座位信息" link to="/pages/Manager/editSource" @click="onClick($event,1)"></uni-list-item>
 					</view>
 					<view>
-						<uni-list-item title="投诉信息处理" link to="/pages/Manager/mana-main/editManager" @click="onClick($event,1)"></uni-list-item>
+						<uni-list-item title="投诉信息处理" link to="/pages/Manager/cfcl" @click="onClick($event,1)"></uni-list-item>
 					</view>
 				</uni-list>
 			</uni-card>
@@ -34,12 +34,6 @@
 					</view>
 					<view>
 					<uni-list-item title="编辑公告" link to="/pages/manager/createMana"></uni-list-item>
-					</view>
-					<view>
-					<uni-list-item title="新增规定" link to="/pages/manager/createMana"></uni-list-item>
-					</view>
-					<view>
-					<uni-list-item title="编辑规定" link to="/pages/Manager/resource-main/createVideo"></uni-list-item>
 					</view>
 				</uni-list>
 			</uni-card>

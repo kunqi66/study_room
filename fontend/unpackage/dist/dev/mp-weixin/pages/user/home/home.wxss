@@ -1,4 +1,7 @@
 
+.temp{
+	text-align: center;
+}
 .tanchuang1{
 	background-color: azure;
 	width: 300px;
@@ -42,11 +45,10 @@
 }
 .weather_home{
 	margin-top: 10px;
-	width: 45%;
+	width: 90%;
 	margin-left: 5%;
 	font-size: 18px;
 	height: 120px;
-	float: left;
 }
 .notice_home{
 	width: 90%;
@@ -55,11 +57,9 @@
 	margin-bottom: 20px;
 }
 .manage_home{
-	background-color: bisque;
 	height: 120px;
-	width: 45%;
-	margin-right: 5%;
-	float: right;
+	width: 90%;
+	margin-left: 5%;
 }
 .complaint_home{
 	margin-top: 20px;
