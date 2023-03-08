@@ -14,6 +14,9 @@
 					{{noticelist[0].notice_time}}
 				</view>
 		</view>
+		
+		
+		
 		<view class="temp">
 			<view class="weather_home" @click="createWeather()">
 				<view>
@@ -98,44 +101,44 @@
 				realWeather:{},
 				weatherList:[
 				],
-				noticelist:[{
-					"notice_title":"公告",
-					"notice_text":"我看谁再给我卷",
-					"notice_time":"2023年3月7日"
-				},
-				{
-					"notice_title":"公告",
-					"notice_text":"我看谁再给我卷",
-					"notice_time":"2023年3月7日"
-				},
-				{
-					"notice_title":"公告",
-					"notice_text":"我看谁再给我卷",
-					"notice_time":"2023年3月7日"
-				},
-				{
-					"notice_title":"公告",
-					"notice_text":"我看谁再给我卷",
-					"notice_time":"2023年3月7日"
-				},
-				{
-					"notice_title":"公告",
-					"notice_text":"我看谁再给我卷",
-					"notice_time":"2023年3月7日"
-				},
-				{
-					"notice_title":"公告",
-					"notice_text":"我看谁再给我卷",
-					"notice_time":"2023年3月7日"
-				}],
+				noticelist:[],
 				
 			}
 			},
 		onLoad() {
 			this.loadWeather()
+			this.loadNotice()
 			console.log("获取到当前的天气"+this.realWeather+"获取数据"+this.weather)
 		},
 		methods: {
+			loadNotice(){
+				var that=this;
+				uni.request({
+						header: {'Authorization':getApp().globalData.token,
+						   'content-type':'application/x-www-form-urlencoded'},
+						url:getApp().globalData.urlRoot+"manager/loadNotice",
+						method:'POST',
+						data:{
+						},
+						success: (res) => {
+							if(res.data.suc){
+								console.log("获取管理员列表成功")
+								that.noticelist=res.data.form
+								console.log(that.noticelist[0].title)
+								console.log(res.data.form)
+							}else{
+								console.log("未查询到数据")
+								console.log(res.data.message)
+							}
+						},
+						fail() {
+							uni.showToast({
+								title: "获取失败！",
+								icon: 'none'
+							})
+						}
+					})
+			},
 			createWeather(){
 				this.$refs.weather.open()
 			},

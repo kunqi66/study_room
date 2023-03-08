@@ -47,6 +47,8 @@ class Manager(Base):
 class Complaint(Base):
     __tablename__ = 'Complaint'  # 表名
     id = Column(Integer, primary_key=True, autoincrement=True)
+    class_number = Column(Integer)
+    number = Column(Integer,nullable=False)
     date = Column(String(10), nullable=False)
     reason = Column(String(60),nullable=False)
     result = Column(String(1))
@@ -67,19 +69,66 @@ class Notice(Base):
     text = Column(String(200),nullable=False)
     date = Column(String(20),nullable=False)
 
+class Stu_class(Base):
+    __tablename__ = 'Stu_class'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    title = Column(String(10),nullable=False)
+    number = Column(Integer,nullable=False)
+
+class Site(Base):
+    __tablename__ = 'Site'  # 表名
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    state = Column(String(1), nullable=True)   # 可用A，不可用E
+
 
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)  # 创建表
-
+    """
+    h1 = Notice(title='公告1', text="好好学习，卷起来",date="2023.04.01")
+    h2 = Notice(title='公告2',
+                text="图书馆自习室是供图书馆所有持证读者学习的场所。每位读者都拥有使用自习座位的权利，同时还应该履行维护公共秩序和保持环境卫生的义务。",
+                date="2023.04.01")
+    h3 = Notice(title='公告3', text="我看谁在卷", date="2023.04.01")
+    h4 = Notice(title='公告4',
+                text="公告功能测试",
+                date="2023.04.01")
+    sess.add(h1)
+    sess.add(h2)
+    sess.add(h3)
+    sess.add(h4)
+    sess.commit()
+"""
     # 主管理员创建信息
     """
     manager_main = Manager(email="2839078819@qq.com", password="my123")
     sess.add(manager_main)
     sess.commit()
     """
-
+    """
+    i = 0
+    while i < 60:
+        h = Site(state='A')
+        sess.add(h)
+        sess.commit()
+        i = i+1
+    """
+    """
+    h1 = Stu_class(title='一号自习室',number=20)
+    h2 = Stu_class(title='二号自习室', number=20)
+    h3 = Stu_class(title='三号自习室', number=20)
+    h4 = Stu_class(title='四号自习室', number=20)
+    h5 = Stu_class(title='五号自习室', number=20)
+    h6 = Stu_class(title='六号自习室', number=20)
+    sess.add(h1)
+    sess.add(h2)
+    sess.add(h3)
+    sess.add(h4)
+    sess.add(h5)
+    sess.add(h6)
+    sess.commit()
     # 操作数据库过程示例
+    """
     """
 
     Session = sessionmaker(bind=engine)

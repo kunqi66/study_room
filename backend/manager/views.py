@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 from manager.init import manager_bp
 from flask import request,jsonify
-from sql_model import sess,Manager
+from sql_model import sess,Manager,Stu_class,Notice
 import json
 
 class MyEncoder(json.JSONEncoder):
@@ -35,4 +35,49 @@ def Login():
             return json.dumps({
                 "suc": False,
                 "message": "邮箱未被赋予管理员权限",
+            })
+
+
+@manager_bp.route('/loadRoom',methods=['GET','POST'])
+def loadRoom():
+    if request.method == 'POST':
+        list = []
+        form = sess.query(Stu_class).all()
+        for r in form:
+            list.append({
+                "title": r.title,
+                "number": r.number,
+            })
+        if form:
+            return json.dumps({
+                "suc": True,
+                "form": list,
+            }, cls=MyEncoder, indent=4)
+        else:
+            return json.dumps({
+                "suc": False,
+                "message": "未查询到数据",
+            })
+
+
+@manager_bp.route('/loadNotice',methods=['GET','POST'])
+def loadNotice():
+    if request.method == 'POST':
+        list = []
+        form = sess.query(Notice).all()
+        for r in form:
+            list.append({
+                "notice_title": r.title,
+                "notice_text": r.text,
+                "notice_time":r.date,
+            })
+        if form:
+            return json.dumps({
+                "suc": True,
+                "form": list,
+            }, cls=MyEncoder, indent=4)
+        else:
+            return json.dumps({
+                "suc": False,
+                "message": "未查询到数据",
             })
