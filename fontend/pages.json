@@ -64,6 +64,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/manager/complaint",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

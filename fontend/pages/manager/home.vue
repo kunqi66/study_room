@@ -17,7 +17,7 @@
 						<uni-list-item title="更改座位信息" link to="/pages/Manager/editSource" @click="onClick($event,1)"></uni-list-item>
 					</view>
 					<view>
-						<uni-list-item title="投诉信息处理" link to="/pages/Manager/cfcl" @click="onClick($event,1)"></uni-list-item>
+						<uni-list-item title="投诉信息处理" link to="/pages/manager/complaint" ></uni-list-item>
 					</view>
 				</uni-list>
 			</uni-card>

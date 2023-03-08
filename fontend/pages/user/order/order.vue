@@ -2,7 +2,7 @@
 	<view>
 		<view>
 			<view  class="card_home1" v-for="(item,index) in list">
-				<view :class="index/2==0?'right':'left'">
+				<view :class="index%2==0?'right':'left'">
 					<uni-card :title="item.title" :isFull="true" @click="onclick(index)">
 						<text class="text_home" >自习室还剩余：{{item.number}}个座位</text>
 					</uni-card>

@@ -6,7 +6,8 @@
     "pages/user/order/order",
     "pages/manager/home",
     "pages/manager/createNotice",
-    "pages/manager/createMana"
+    "pages/manager/createMana",
+    "pages/manager/complaint"
   ],
   "subPackages": [],
   "window": {
