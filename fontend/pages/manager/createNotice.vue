@@ -6,7 +6,7 @@
 				</view>
 		<uni-section title="公告题目:" type="line"></uni-section>
 			<view class="example-body">
-				<uni-easyinput  type="text" v-model="formData.text" placeholder="请输入公告标题">
+				<uni-easyinput  type="text" v-model="formData.title" placeholder="请输入公告标题">
 				</uni-easyinput>
 			</view>
 		<uni-section title="公告内容:" type="line"></uni-section>
@@ -14,6 +14,7 @@
 				<uni-easyinput  type="textarea" v-model="formData.text" placeholder="请输入公告内容">
 				</uni-easyinput>
 			</view>
+		<button type="primary" @click="submitForm()">上传</button>
 	</view>
 </template>
 

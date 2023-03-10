@@ -101,16 +101,16 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 97))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 149))
     },
     uniListItem: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 105))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 157))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 112))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 164))
     },
     uniSection: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-section/components/uni-section/uni-section */ "uni_modules/uni-section/components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-section/components/uni-section/uni-section.vue */ 119))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-section/components/uni-section/uni-section */ "uni_modules/uni-section/components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-section/components/uni-section/uni-section.vue */ 171))
     },
   }
 } catch (e) {
@@ -265,6 +265,45 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -272,7 +311,19 @@ var _default = {
       weather: {},
       realWeather: {},
       weatherList: [],
-      noticelist: []
+      noticelist: [],
+      currentIndex: 0,
+      timer: null,
+      imgArr: [{
+        id: 0,
+        url: "/static/log/自习1.jpg"
+      }, {
+        id: 1,
+        url: "/static/log/自习2.jpg"
+      }, {
+        id: 2,
+        url: "/static/log/自习3.jpg"
+      }]
     };
   },
   onLoad: function onLoad() {
@@ -338,7 +389,48 @@ var _default = {
           that.weatherList = res.data.result.future;
         }
       });
+    },
+    startInterval: function startInterval() {
+      var _this = this;
+      clearInterval(this.timer);
+      this.timer = setInterval(function () {
+        _this.currentIndex++;
+        if (_this.currentIndex > _this.imgArr.length - 1) {
+          _this.currentIndex = 0;
+        }
+      }, 3000);
+    },
+    clickIcon: function clickIcon(val) {
+      if (val === 'down') {
+        this.currentIndex++;
+        if (this.currentIndex === this.imgArr.length) {
+          this.currentIndex = 0;
+        }
+      } else {
+        if (this.currentIndex === 0) {
+          this.currentIndex = this.imgArr.length;
+        }
+        this.currentIndex--;
+      }
+    },
+    changeImg: function changeImg(index) {
+      this.currentIndex = index;
+    },
+    changeInterval: function changeInterval(val) {
+      if (val) {
+        clearInterval(this.timer);
+      } else {
+        this.startInterval();
+      }
+    },
+    goto: function goto() {
+      uni.navigateTo({
+        url: "/pages/user/home/feedback"
+      });
     }
+  },
+  mounted: function mounted() {
+    this.startInterval();
   }
 };
 exports.default = _default;

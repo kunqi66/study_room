@@ -47,8 +47,8 @@ class Manager(Base):
 class Complaint(Base):
     __tablename__ = 'Complaint'  # 表名
     id = Column(Integer, primary_key=True, autoincrement=True)
-    class_number = Column(Integer)
-    number = Column(Integer,nullable=False)
+    class_number = Column(String(20))
+    number = Column(String(20),nullable=False)
     date = Column(String(10), nullable=False)
     reason = Column(String(60),nullable=False)
     result = Column(String(1))
@@ -60,7 +60,8 @@ class Recorde(Base):
     stu_number = Column(String(50),nullable=False)
     class_number = Column(Integer)
     zw_number = Column(Integer)
-    date = Column(String(10))
+    start_time = Column(String(20))
+    end_time = Column(String(20))
 
 class Notice(Base):
     __tablename__ = 'Notice'  # 表名

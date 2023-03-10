@@ -1,4 +1,8 @@
 
+.beijing1{
+	width: 500px;
+	height: 80px;
+}
 .text_home{
 	color: crimson;
 }
@@ -16,4 +20,5 @@
 	float: right;
 	margin-top: 50px;
 }
+
 

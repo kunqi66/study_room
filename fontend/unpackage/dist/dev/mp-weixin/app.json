@@ -7,7 +7,15 @@
     "pages/manager/home",
     "pages/manager/createNotice",
     "pages/manager/createMana",
-    "pages/manager/complaint"
+    "pages/manager/complaint",
+    "pages/user/person/roomRecode",
+    "pages/manager/SYGG",
+    "pages/user/person/Violation_record",
+    "pages/user/person/user1",
+    "pages/user/person/user2",
+    "pages/manager/editUser",
+    "pages/manager/editSourse",
+    "pages/user/home/feedback"
   ],
   "subPackages": [],
   "window": {

@@ -19,6 +19,6 @@
 <style>
 	/*每个页面公共css */
 	page{
-		background-color: #eef7fe;
+		background-color: aliceblue;
 	}
 </style>

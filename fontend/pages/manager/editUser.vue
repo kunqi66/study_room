@@ -1,11 +1,12 @@
 <template>
 	<view>
-		<uni-table ref="table" :loading="loading" border stripe type="selection" emptyText="暂无更多数据" @selection-change="selectionChange">
+		<uni-table ref="table" emptyText="暂无更多数据" @selection-change="selectionChange">
 			<uni-tr>
 				<uni-th width="100" aling="center">姓名</uni-th>
 				<uni-th width="100" aling="center">学号</uni-th>
 				<uni-th width="100" aling="center">电话</uni-th>
-				<uni-th width="80" align="center">设置</uni-th>
+				<uni-th width="160" align="center">选项</uni-th>
+				<uni-th width="160" align="center">操作</uni-th>
 			</uni-tr>
 			<uni-tr v-for="(item,index) in editUser" :key="index">
 				<uni-td align="center">{{ editUser[index].name }}</uni-td>
@@ -17,12 +18,11 @@
 				</uni-td>
 				<uni-td>
 					<view class="uni-group">
-						<button class="uni-button" size="mini" type="primary">修改</button>
+						<button class="uni-button" size="mini" type="primary" @click="edit()">修改</button>
 					</view>
 				</uni-td>
 			</uni-tr>
 		</uni-table>
-		<view class="uni-pagination-box"><uni-pagination show-icon :page-size="pageSize" :current="pageCurrent" :total="total" @change="change" /></view>
 	</view>
 </template>
 
@@ -31,27 +31,17 @@
 		data() {
 			return {
 				editUser:[],
-				searchVal: '',
-				// 每页数据量
-				pageSize: 10,
-				// 当前页
-				pageCurrent: 1,
-				// 数据总量
-				total: 0,
 				loading: false
 			}
 		},
 		onLoad() {
-			this.selectedIndexs = []
-			this.getData(1)
 			var that=this
 			uni.request({
 				header: {'Authorization':getApp().globalData.token,
 				   'content-type':'application/x-www-form-urlencoded'},
-				url:getApp().globalData.urlRoot+"manager/Loadmanager",
+				url:getApp().globalData.urlRoot+"manager/loadUser",
 				method:'POST',
 				data:{
-					uid:-1,
 				},
 				success: (res) => {
 					if(res.data.suc){
@@ -73,7 +63,33 @@
 			})
 			},
 		methods: {
-
+			edit(){
+				var that=this
+				uni.request({
+					header: {'Authorization':getApp().globalData.token,
+					   'content-type':'application/x-www-form-urlencoded'},
+					url:getApp().globalData.urlRoot+"manager/editUser",
+					method:'POST',
+					data:{
+						number:30,
+					},
+					success: (res) => {
+						if(res.data.suc){
+							console.log("修改成功")
+							
+						}else{
+							console.log("修改失败")
+							console.log(res.data.message)
+						}
+					},
+					fail() {
+						uni.showToast({
+							title: "获取失败！",
+							icon: 'none'
+						})
+					}
+				})
+			}
 		}
 	}
 </script>

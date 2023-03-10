@@ -42,7 +42,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "管理员主页",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -51,7 +51,7 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "管理员主页",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": true
 		    }
 		    
 		}
@@ -68,11 +68,86 @@
             "path" : "pages/manager/complaint",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "处理投诉",
                 "enablePullDownRefresh": false
             }
             
         }
+        ,{
+            "path" : "pages/user/person/roomRecode",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path" : "pages/manager/SYGG",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "编辑公告",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/user/person/Violation_record",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "个人违规记录",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/user/person/user1",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "个人信息",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/user/person/user2",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "个人违规记录",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/manager/editUser",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "修改信息",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		
+		
+        ,{
+            "path" : "pages/manager/editSourse",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改座位信息",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path" : "pages/user/home/feedback",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "修改座位信息",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

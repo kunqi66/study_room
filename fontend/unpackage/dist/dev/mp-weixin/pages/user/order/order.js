@@ -101,10 +101,16 @@ var components
 try {
   components = {
     uniCard: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 133))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 185))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 112))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 164))
+    },
+    uniSection: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-section/components/uni-section/uni-section */ "uni_modules/uni-section/components/uni-section/uni-section").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-section/components/uni-section/uni-section.vue */ 171))
+    },
+    uniDatetimePicker: function () {
+      return Promise.all(/*! import() | uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 229))
     },
   }
 } catch (e) {
@@ -231,72 +237,94 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
       list: [{}, {}, {}, {}, {}, {}],
-      sitelist: [],
-      bro_id: -1
+      sitelist: [{}, {}, {}],
+      bro_id: -1,
+      baseFormData: {},
+      imageURL: "/static/beijing1.jpg"
     };
   },
   onLoad: function onLoad() {
-    var that = this;
-    uni.request({
-      header: {
-        'Authorization': getApp().globalData.token,
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      url: getApp().globalData.urlRoot + "manager/loadRoom",
-      method: 'POST',
-      data: {},
-      success: function success(res) {
-        if (res.data.suc) {
-          console.log("获取管理员列表成功");
-          that.list = res.data.form;
-          console.log(that.list[0].title);
-          console.log(res.data.form);
-        } else {
-          console.log("未查询到数据");
-          console.log(res.data.message);
-        }
-        uni.request({
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          url: getApp().globalData.urlRoot + "manager/loadSite",
-          method: 'POST',
-          data: {},
-          success: function success(res) {
-            if (res.data.suc) {
-              console.log("获取管理员列表成功");
-              that.sitelist = res.data.form;
-              console.log(that.sitelist[0].title);
-              console.log(res.data.form);
-            } else {
-              console.log("未查询到数据");
-              console.log(res.data.message);
-            }
-          },
-          fail: function fail() {
-            uni.showToast({
-              title: "获取失败！",
-              icon: 'none'
-            });
-          }
-        });
-      },
-      fail: function fail() {
-        uni.showToast({
-          title: "获取失败！",
-          icon: 'none'
-        });
-      }
-    });
+    this.load();
   },
   methods: {
+    load: function load() {
+      var that = this;
+      uni.request({
+        header: {
+          'Authorization': getApp().globalData.token,
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url: getApp().globalData.urlRoot + "manager/loadRoom",
+        method: 'POST',
+        data: {},
+        success: function success(res) {
+          if (res.data.suc) {
+            console.log("获取管理员列表成功");
+            that.list = res.data.form;
+            console.log(that.list[0].title);
+            console.log(res.data.form);
+          } else {
+            console.log("未查询到数据");
+            console.log(res.data.message);
+          }
+          uni.request({
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            url: getApp().globalData.urlRoot + "manager/loadSite",
+            method: 'POST',
+            data: {},
+            success: function success(res) {
+              if (res.data.suc) {
+                console.log("获取管理员列表成功");
+                that.sitelist = res.data.form;
+                console.log(that.sitelist[0].title);
+                console.log(res.data.form);
+              } else {
+                console.log("未查询到数据");
+                console.log(res.data.message);
+              }
+            },
+            fail: function fail() {
+              uni.showToast({
+                title: "获取失败！",
+                icon: 'none'
+              });
+            }
+          });
+        },
+        fail: function fail() {
+          uni.showToast({
+            title: "获取失败！",
+            icon: 'none'
+          });
+        }
+      });
+    },
     jie: function jie(index) {
       console.log("第" + index + "个座位调用");
       this.bro_id = index + 1;
+      this.open();
     },
     onclick: function onclick(index) {
       if (index == 0) {
@@ -317,6 +345,48 @@ var _default = {
       if (index == 5) {
         this.$refs.site6.open();
       }
+    },
+    open: function open() {
+      this.$refs.apply.open();
+    },
+    shut: function shut() {
+      this.$refs.apply.close();
+    },
+    submit: function submit() {
+      var _this = this;
+      var c_number = Math.floor(this.bro_id / 10) + 1;
+      var that = this;
+      uni.request({
+        header: {
+          'Authorization': getApp().globalData.token,
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url: getApp().globalData.urlRoot + "user/broSite",
+        method: 'POST',
+        data: {
+          "c_number": c_number,
+          "uid": getApp().globalData.uid,
+          "start": that.baseFormData.date,
+          "end": "that.baseFormData.end",
+          "number": that.bro_id
+        },
+        success: function success(res) {
+          if (res.data.suc) {
+            console.log("借用座位成功");
+            _this.load();
+          } else {
+            console.log("借用座位失败");
+            console.log(res.data.message);
+          }
+        },
+        fail: function fail() {
+          uni.showToast({
+            title: "获取失败！",
+            icon: 'none'
+          });
+        }
+      });
+      this.$refs.apply.close();
     }
   }
 };

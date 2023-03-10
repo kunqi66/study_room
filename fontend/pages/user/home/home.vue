@@ -14,7 +14,38 @@
 					{{noticelist[0].notice_time}}
 				</view>
 		</view>
-		
+		<view>
+			<div class="showImg" >
+			   
+			    <img @mouseover="changeInterval(true)" 
+			         @mouseleave="changeInterval(false)"  
+			         v-for="(item) in imgArr" 
+			         :key="item.id"
+			         :src="item.url" 
+			         alt="暂无图片" 
+			         v-show="item.id===currentIndex" 
+			         >
+			    
+			    <div  @click="clickIcon('up')"   class="iconDiv icon-left"> 
+			        <i class="el-icon-caret-left"></i>
+			    </div>
+			  
+			    <div  @click="clickIcon('down')"  class="iconDiv icon-right">
+			        <i class="el-icon-caret-right"></i>
+			    </div>
+			  
+			    <div class="banner-circle">
+			        <ul>
+			            <li @click="changeImg(item.id)" 
+			                v-for="(item) in imgArr" 
+			                :key="item.id"
+			                :class="item.id===currentIndex? 'active': '' "
+			             ></li>
+			        </ul>
+			    </div>
+			</div>
+
+		</view>
 		
 		
 		<view class="temp">
@@ -44,6 +75,9 @@
 			<uni-list-item title="3.请勿在学习区域吃东西。" note="0.0"></uni-list-item>
 				
 		</view> 
+		<view class="feedback">
+						<button style="width: 50%;" type="primary" plain="true" @click="goto('/pages/u')">投诉点这里哦</button>
+					</view>
 		
 			<uni-popup ref="weather" type="center" background-color="" border-radius="14">
 				<view class="tanchuang1">
@@ -68,6 +102,11 @@
 				 <uni-list-item title="6.如有结伴同行的小伙伴需要讨论问题，可以到休息区或就餐区小声讨论" note="0.0"></uni-list-item>
 
 			  </view>
+			  
+			  
+			
+						
+		
 		  </uni-popup>
 
 
@@ -102,6 +141,19 @@
 				weatherList:[
 				],
 				noticelist:[],
+				currentIndex :0,
+				timer:null,
+				imgArr:[
+				{	id:0,
+				 url:"/static/log/自习1.jpg",
+				},{
+				    id:1,
+				url:"/static/log/自习2.jpg",
+				},{
+					id:2,
+				url:"/static/log/自习3.jpg",
+				},
+				]
 				
 			}
 			},
@@ -166,9 +218,51 @@
 						
 					}
 				})
-			}
+			},
 	
-		}
+	      startInterval(){
+	      				clearInterval(this.timer);
+	      				this.timer = setInterval(()=>{
+	      					this.currentIndex++;
+	      					if(this.currentIndex > this.imgArr.length-1){
+	      						this.currentIndex = 0
+	      					}
+	      				},3000)
+	      			},
+		 clickIcon(val){
+		 				if(val==='down'){
+		 					this.currentIndex++;
+		 					if(this.currentIndex===this.imgArr.length){
+		 						this.currentIndex = 0;
+		 					}
+		 				}else{
+		 					
+		 					if(this.currentIndex === 0){
+		 						this.currentIndex = this.imgArr.length;
+		 					}
+		 					this.currentIndex--;
+		 				}
+		 			},
+		 changeImg(index){
+		 				this.currentIndex = index
+		 			},
+	     changeInterval(val){
+	     				if(val){
+	     					clearInterval(this.timer)
+	     				}else{
+	     					this.startInterval()
+	     				}
+	     			},
+					goto(){
+										uni.navigateTo({
+										url:"/pages/user/home/feedback"
+									})
+								}
+	     		},
+				mounted(){
+							this.startInterval()
+						}
+		
 	}
 </script>
 
@@ -178,9 +272,10 @@
 	}
 	.tanchuang1{
 		background-color: azure;
-		width: 300px;
-		height: 550px;
+		width: 200px;
+		height: 600px;
 		border-radius: 10px;
+		margin-left: 5%;
 	}
 	.title{
 		width: 100%;
@@ -239,4 +334,75 @@
 		margin-top: 20px;
 	}
 	
+	li {
+		list-style-type: none;
+	}
+	.showImg{
+		position: relative;
+		width: 90%;
+		height: 240px;
+		margin-left: 5%;
+		overflow: hidden;
+	}
+	.showImg img{
+		width: 100%;
+		height: 100%;
+	}
+	
+	.iconDiv{
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 7px;
+		height: 7px;
+		border: 1px solid #666;
+		border-radius: 4px;
+		background-color: rgba(125,125,125,.2);
+		line-height: 7px;
+		text-align: center;
+		font-size: 4px;
+		cursor: pointer;
+	}
+	.iconDiv:hover{
+		background-color: white;
+	}
+	.icon-left{
+		left: 10px;
+	}
+	.icon-right{
+		right: 10px;
+	}
+	
+	.banner-circle{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 20px;
+	}
+	.banner-circle ul{
+		margin: 0 50px;
+		height: 100%;
+		text-align: right;
+	}
+	.banner-circle ul li{
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		margin: 0 5px;
+		border-radius: 7px;
+		background-color: rgba(125,125,125,.8);
+		cursor: pointer;
+	}
+	.active{
+		background-color: black !important; 
+	}
+	
+	.feedback{
+			height: 50%;
+			margin-top: 50%;
+			
+			
+		}
+	
 </style>
+

@@ -16,8 +16,8 @@
 		</view>
 		<view class="list_home">
 		<uni-list style=" border-radius: 18rpx;">
-			<view style="border-radius: 18rpx;" v-for="(item,index) in List">
-			<uni-list-item :title="item.title" link :to="item.url" @click="onClick($event,1)" ></uni-list-item>
+			<view style="border-radius: 18rpx;">
+			<uni-list-item title="个人信息" link to="/pages/user/person/user1"></uni-list-item>
 			</view>
 			
 		</uni-list>
@@ -82,16 +82,10 @@
 				userInfo:{},
 				List:[{
 					title:"个人信息",
-					url:"",
-				},{
-					title:"修改个人信息",
-					url:"",
+					url:"pages/user/person/user1",
 				},
 				{
 					title:"预约自习室记录",
-					url:"",
-				},{
-					title:"个人违规记录",
 					url:"",
 				}] 
 			}

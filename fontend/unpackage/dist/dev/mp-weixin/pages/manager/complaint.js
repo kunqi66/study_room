@@ -101,19 +101,22 @@ var components
 try {
   components = {
     uniTable: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 188))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 240))
     },
     uniTr: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 195))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 247))
     },
     uniTh: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 202))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 254))
     },
     uniTd: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 209))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 261))
+    },
+    uniTitle: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-title/components/uni-title/uni-title */ "uni_modules/uni-title/components/uni-title/uni-title").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-title/components/uni-title/uni-title.vue */ 192))
     },
     uniPagination: function () {
-      return Promise.all(/*! import() | uni_modules/uni-pagination/components/uni-pagination/uni-pagination */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-pagination/components/uni-pagination/uni-pagination")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-pagination/components/uni-pagination/uni-pagination.vue */ 216))
+      return Promise.all(/*! import() | uni_modules/uni-pagination/components/uni-pagination/uni-pagination */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-pagination/components/uni-pagination/uni-pagination")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-pagination/components/uni-pagination/uni-pagination.vue */ 268))
     },
   }
 } catch (e) {
@@ -170,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -205,52 +208,72 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      table_data: [{
-        "class_number": "21",
-        "number": "21",
-        "date": "32",
-        "reason": "阿斯加德辣椒水开了多久拉看似简单凯乐科技阿里将大大力开始打卡会计核算代价安静客户数的卡德加"
-      }, {
-        "class_number": "321",
-        "number": "2",
-        "date": "2",
-        "reason": "舍杜画家山东矿机架势接口回调对卡交会对接华看似简单爱空间和我带我就挖"
-      }, {
-        "class_number": "4",
-        "number": "2",
-        "date": "1",
-        "reason": "神盾局群殴IU欧文我空间还澳际丶好好说"
-      }]
+      table_data: [],
+      deal: 1
     };
   },
   onLoad: function onLoad() {
     var that = this;
-    // uni.request({
-    // 	header: {
-    // 	   'content-type':'application/x-www-form-urlencoded'},
-    // 	url:getApp().globalData.urlRoot+"manager/Loadmanager",
-    // 	method:'POST',
-    // 	data:{
-
-    // 	},
-    // 	success: (res) => {
-    // 		that.table_data=res.data.form
-    // 	},
-    // 	fail() {
-    // 		uni.showToast({
-    // 			title: "获取失败！",
-    // 			icon: 'none'
-    // 		})
-    // 	}
-    // })
+    uni.request({
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      url: getApp().globalData.urlRoot + "manager/loadComp",
+      method: 'POST',
+      data: {},
+      success: function success(res) {
+        that.table_data = res.data.form;
+        console.log(that.table_data[0].result);
+      },
+      fail: function fail() {
+        uni.showToast({
+          title: "获取失败！",
+          icon: 'none'
+        });
+      }
+    });
   },
-
-  methods: {}
+  methods: {
+    pz: function pz(index, result) {
+      var that = this;
+      uni.request({
+        url: getApp().globalData.urlRoot + "manager/dealComp",
+        header: {
+          'Authorization': getApp().globalData.token,
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          "id": index + 1,
+          "result": result
+        },
+        //json
+        method: "POST",
+        success: function success(res) {
+          if (res.data.suc) {
+            uni.showToast({
+              title: String(res.data.message),
+              icon: 'checkmarkempty'
+            });
+          } else {
+            uni.showToast({
+              title: String(res.data.message),
+              icon: 'checkmarkempty',
+              duration: 1500
+            });
+          }
+        }
+      });
+    }
+  }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
